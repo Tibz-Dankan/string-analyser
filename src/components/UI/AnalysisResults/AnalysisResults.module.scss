@@ -1,0 +1,33 @@
+.analysis-results {
+  background-color: lightblue;
+  table {
+    width: 100%;
+    //   border-collapse: collapse;
+  }
+}
+/* table.css */
+
+.results-table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 2rem auto;
+
+  &__caption {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  &__row {
+    border: 1px solid black;
+  }
+  &__cell {
+    padding: 0.5rem;
+    text-align: center;
+  }
+  &__header-cell {
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: lightgray;
+  }
+}

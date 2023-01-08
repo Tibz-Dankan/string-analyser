@@ -1,0 +1,42 @@
+/* Colors used where from open color(https://yeun.github.io/open-color) 
+and converted into hsl from https://convertacolor.com */
+
+/*
+  FONT SIZE SYSTEM(px)
+  10 /  12 / 14 / 16 / 18 / 20 / 24 / 24 / 36 / 44 / 52 / 62 / 74 / 86 / 98 
+  SPACING SYSTEM(px)
+  2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128 
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-weight: 400;
+  line-height: 1.6;
+  font-family: "Inter", sans-serif;
+  font-size: 62.5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+/* .logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+} */

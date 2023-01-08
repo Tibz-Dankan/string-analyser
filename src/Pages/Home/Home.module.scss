@@ -1,0 +1,9 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+
+  &__header {
+    background-color: hsl(120, 100%, 25%);
+  }
+}
