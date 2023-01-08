@@ -27,12 +27,9 @@ const StringManipulate: React.FC = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (isSubmitted) {
-      console.log("string about to be analyzed");
-      console.log(str);
-      const strAnalyzed = stringAnalysis(str[0]);
-      setAnalysis(strAnalyzed);
-    }
+    if (str[0] === null) return;
+    const strAnalyzed = stringAnalysis(str[0]);
+    setAnalysis(strAnalyzed);
   }, [isSubmitted]);
 
   return (

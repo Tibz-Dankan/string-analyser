@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useContext } from "react";
+import React, { Fragment, useRef, useContext, useState } from "react";
 import { StringInputContext } from "../../../context/stringInputContext";
 import styles from "./StringInputForm.module.scss";
 
@@ -9,16 +9,25 @@ interface InputProps {
 const StringInputForm: React.FC<InputProps> = (props): JSX.Element => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [strValue, setStrValue] = useContext<string | any>(StringInputContext);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const onSubmit = (): void => {
-    props.onSubmit(true);
+    switch (isSubmitted) {
+      case true:
+        props.onSubmit(false);
+        setIsSubmitted(!isSubmitted);
+        break;
+      case false:
+        props.onSubmit(true);
+        setIsSubmitted(!isSubmitted);
+        break;
+      default:
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const inputValue = inputRef.current?.value;
-    console.log("input string");
-    console.log(inputValue);
     setStrValue(inputValue);
     onSubmit();
   };
@@ -30,6 +39,8 @@ const StringInputForm: React.FC<InputProps> = (props): JSX.Element => {
           <textarea
             className={styles["string-input-form__input"]}
             ref={inputRef}
+            placeholder="Enter sentence(s) or a word or symbols(s) etc ..."
+            required
           />
           <button
             type="submit"
