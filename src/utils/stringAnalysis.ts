@@ -69,6 +69,6 @@ export const stringAnalysis = (str: string): AnalysisInterface => {
     words,
     symbols,
     spaces,
-    totalCharacters: letters + numbers + words + symbols + spaces,
+    totalCharacters: letters + numbers + symbols + spaces,
   };
 };
