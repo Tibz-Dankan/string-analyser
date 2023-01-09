@@ -39,7 +39,7 @@ const StringInputForm: React.FC<InputProps> = (props): JSX.Element => {
           <textarea
             className={styles["string-input-form__input"]}
             ref={inputRef}
-            placeholder="Enter sentence(s) or a word or symbols(s) etc ..."
+            placeholder="Enter text here for analysis"
             required
           />
           <button
