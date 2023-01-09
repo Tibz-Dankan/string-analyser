@@ -13,12 +13,6 @@ interface AnalysisResultsProps {
 const AnalysisResults: React.FC<AnalysisResultsProps> = (
   props
 ): JSX.Element => {
-  // letters
-  // numbers
-  // words
-  // symbols
-  // spaces
-  // total characters
   return (
     <Fragment>
       <div className={styles["analysis-results"]}>
@@ -28,8 +22,10 @@ const AnalysisResults: React.FC<AnalysisResultsProps> = (
           </caption>
           <thead>
             <tr className={styles["results-table__row"]}>
-              <th className={styles["results-table__header-cell"]}>Title</th>
-              <th className={styles["results-table__header-cell"]}>Value</th>
+              <th className={styles["results-table__header-cell"]}>
+                Character Type
+              </th>
+              <th className={styles["results-table__header-cell"]}>Number</th>
             </tr>
           </thead>
           <tbody>
@@ -65,7 +61,10 @@ const AnalysisResults: React.FC<AnalysisResultsProps> = (
               <td className={styles["results-table__cell"]}>
                 Total Characters
               </td>
-              <td className={styles["results-table__cell"]}>
+              <td
+                className={styles["results-table__cell"]}
+                id={styles["total-char-value"]}
+              >
                 {props.totalCharacters}
               </td>
             </tr>
