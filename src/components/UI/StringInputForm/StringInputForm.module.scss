@@ -1,37 +1,123 @@
-.string-analyser {
-  &__header {
+.string-input {
+  margin-top: 2.4rem;
+  display: grid;
+  place-items: center;
+  &-form {
+    width: 40rem;
+    padding: 2.4rem;
+    border-radius: 0.4rem;
     display: flex;
-    align-items: center;
-  }
+    flex-direction: column;
+    background-color: var(--color-grey-light-2);
+    box-shadow: var(--shadow-light);
+    @media (min-width: 1030px) {
+      width: 50rem;
+    }
+    @media (max-width: 450px) {
+      width: 30rem;
+    }
 
-  &__logo {
-    font-size: 24px;
-    font-weight: bold;
+    &__input {
+      width: 100%;
+      height: 12.8rem;
+      padding: 1.6rem;
+      background-color: var(--color-grey-dark-3);
+      color: var(--color-grey-light-2);
+      border-radius: 0.4rem;
+      outline: none;
+      resize: none;
+      // &:hover,
+      // &:focus {
+      //   transition: 0.35s;
+      //   border: 0.2rem solid var(--color-primary-dark);
+      //   border: 0.4rem solid var(--color-primary);
+      // }
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      &::placeholder {
+        // color: hsl(339.3, 69.4%, 38.4%);
+        color: var(--color-secondary-light);
+        opacity: 1;
+      }
+      /* Internet Explorer 10-11 */
+      &:-ms-input-placeholder {
+        color: var(--color-secondary-light);
+      }
+      /* Microsoft Edge */
+      &::-ms-input-placeholder {
+        color: var(--color-secondary-light);
+      }
+    }
+    &__submit-button {
+      margin-top: 1.6rem;
+      padding: 0.8rem 0rem;
+      border-radius: 0.4rem;
+      border: 0.2rem solid var(--color-primary-dark);
+      background-color: var(--color-primary-dark);
+      color: var(--color-grey-light-2);
+      font-weight: bold;
+      outline: none;
+      &:hover,
+      &:focus {
+        transition: 0.35s;
+        background-color: var(--color-primary);
+        border: 0.2rem solid var(--color-primary);
+      }
+    }
   }
+}
 
-  &__input {
-    width: 100%;
-    height: 200px;
+.string-input-form__input {
+  // SCROLLBAR STYLES FOR WEBKIT BROWSERS
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+    height: auto;
   }
-
-  &__submit-button {
-    display: block;
-    margin: 20px auto;
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      to bottom,
+      var(--color-grey-dark-3),
+      var(--color-primary-light),
+      var(--color-secondary),
+      var(--color-primary-dark),
+      var(--color-grey-dark-3)
+    );
+    border-radius: 0.8rem;
   }
-
-  &__table {
-    width: 100%;
-    border-collapse: collapse;
+  &::-webkit-scrollbar-track {
+    background: var(--color-grey-dark-3);
   }
-
-  &__table-caption {
-    text-align: left;
-    font-size: 18px;
-    font-weight: bold;
+  // SCROLLBAR STYLES FOR FIREFOX
+  &::-moz-scrollbar {
+    width: 0.8rem;
+    height: auto;
   }
-
-  // &__footer {
-  //   &::before {
-  //   }
-  // }
+  &::-moz-scrollbar-thumb {
+    background: linear-gradient(
+      to bottom,
+      var(--color-grey-dark-3),
+      var(--color-primary-light),
+      var(--color-secondary),
+      var(--color-primary-dark),
+      var(--color-grey-dark-3)
+    );
+    border-radius: 0.8rem;
+  }
+  &::-moz-scrollbar-track {
+    background: var(---color-grey-dark-3);
+  }
+  // SCROLLBAR STYLES FOR INTERNET EXPLORER
+  .ie ::-ms-thumb {
+    background: linear-gradient(
+      to bottom,
+      var(--color-grey-dark-3),
+      var(--color-primary-light),
+      var(--color-secondary),
+      var(--color-primary-dark),
+      var(--color-grey-dark-3)
+    );
+    border-radius: 0.8rem;
+  }
+  .ie ::-ms-track {
+    background: var(--color-grey-dark-3);
+  }
 }

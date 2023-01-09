@@ -46,7 +46,7 @@ const StringInputForm: React.FC<InputProps> = (props): JSX.Element => {
             type="submit"
             className={styles["string-input-form__submit-button"]}
           >
-            Analyze
+            SUBMIT
           </button>
         </form>
       </div>
