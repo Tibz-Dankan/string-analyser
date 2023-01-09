@@ -10,7 +10,18 @@ const Home: React.FC = (): JSX.Element => {
           <span> STRING-ANALYSER</span>
         </header>
         <main>
-          <StringManipulate />
+          <section className={styles["home__about-description"]}>
+            <p>
+              STRING-ANALYSER is an application that counts characters in a
+              given string of text. It analyzes the text for alphabetic,
+              numeric, and symbolic characters and displays the results in a
+              table. The table also includes the number of words and the total
+              number of characters in the text.
+            </p>
+          </section>
+          <section className={styles["home__string-manipulate"]}>
+            <StringManipulate />
+          </section>
         </main>
         <footer>
           <div className={styles["home__copyright"]}>
