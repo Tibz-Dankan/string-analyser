@@ -14,7 +14,8 @@ const Home: React.FC = (): JSX.Element => {
         </main>
         <footer>
           <div className={styles["home__copyright"]}>
-            STRING-ANALYSER &copy; {new Date().getFullYear()}
+            STRING-ANALYSER &copy; {new Date().getFullYear()}. All rights
+            reserved
           </div>
         </footer>
       </div>

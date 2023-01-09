@@ -2,8 +2,48 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
+  font-size: 1.4rem;
+  min-height: 100vh;
+  background-color: var(--color-grey-light-4);
 
   &__header {
-    background-color: hsl(120, 100%, 25%);
+    padding: 1.6rem;
+    font-size: 2rem;
+    background-color: var(--color-primary);
+    color: var(--color-grey-light-2);
+    font-weight: bold;
+    text-align: center;
+    box-shadow: var(--shadow-light);
+  }
+}
+
+footer {
+  margin-top: 2.4rem;
+  font-size: 1.2rem;
+  .home__copyright {
+    text-align: center;
+    padding: 2.4rem 0rem;
+    color: var(--color-grey-dark-3);
+    position: relative;
+    &::before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0rem;
+      left: 0rem;
+      right: 0rem;
+      height: 0.2rem;
+      z-index: 10;
+      background-image: linear-gradient(
+        to right,
+        var(--color-grey-dark-3),
+        var(--color-primary-dark),
+        var(--color-primary),
+        var(--color-primary-light),
+        var(--color-secondary-light),
+        var(--color-secondary),
+        var(--color-grey-dark-3)
+      );
+    }
   }
 }

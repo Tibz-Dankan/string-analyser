@@ -1,9 +1,6 @@
 import { Fragment, useState, useContext } from "react";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Navigate,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import "./App.scss";
 import { StringInputContext } from "./context/stringInputContext";
 
