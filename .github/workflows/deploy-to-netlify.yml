@@ -1,23 +1,19 @@
-# .github/workflows/netlify.yml
 name: Build and Deploy to Netlify
 on:
   push:
   pull_request:
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3 #Gets the react code
       - uses: actions/setup-node@v3 #Sets up node environment
         with:
           node-version: 16
           cache: "npm"
-
       - run: "npm install --force && npm run build"
-      # ( Build to ./dist or other directory... )
-
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.2
+        uses: nwtgck/actions-netlify@v2.0.0
         with:
           publish-dir: "./dist"
           production-branch: master
@@ -29,47 +25,4 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
-# name: String-Analyser CI/CD
-
-# on:
-#   push:
-#     branches:
-#       - main
-
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3 #Gets the react code
-
-#       - uses: actions/setup-node@v3 #Sets up node environment
-#         with:
-#           node-version: 16
-#           cache: "npm"
-
-#       # - run: npm run build --if-present
-#       - run: "npm install --force && npm run build"
-
-#       # - name: Codecov
-#       #   uses: codecov/codecov-action@v2.1.0
-#       - name: Netlify Deploy
-#         uses: jsmrcaga/action-netlify-deploy@v1.8.2
-
-#         env:
-#           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-#           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-#         run: netlify deploy --prod
-
-# - run: npm ci #Installs dependencies
-#   env:
-#     CI: true
-# - run: npm run build #Runs the build script
-# - name: Deploy production to Netlify
-#   uses: South-Paw/action-netlify-deploy@v1.2.0 #Action for pushing build to netlify
-# with:
-#   github-token: ${{ secrets.GITHUB_TOKEN }}
-#   netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-#   netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
-#   build-dir: "./build"
-#   comment-on-commit: true #The comment should contain deployment url
+        timeout-minutes: 2
