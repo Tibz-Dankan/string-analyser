@@ -1,0 +1,65 @@
+.card {
+    font-size: 1.8rem;
+    position: fixed;
+    z-index: 10000;
+    right: 1%;
+    top: 1%;
+    display: flex;
+    align-items: center;
+    border-radius: 0.4rem;
+    animation: moveInRight 0.5s ease-out;
+    min-width: 30rem;
+  }
+  .content__container {
+    display: flex;
+    align-items: center;
+    padding: 0.2rem;
+    margin-top: 0.2rem;
+    color: hsl(0, 0%, 100%);
+    margin-left: 0.8rem;
+    max-width: 23rem;
+  }
+  .icon__container {
+    padding: 1rem;
+    .icon {
+      display: grid;
+      place-items: center;
+    }
+  }
+  
+  .icon {
+    height: 3rem;
+    width: 3rem;
+    fill: hsl(0, 0%, 100%);
+  }
+  @keyframes moveInRight {
+    0% {
+      opacity: 0;
+      top: -2%;
+    }
+    100% {
+      opacity: 1;
+      top: 1%;
+    }
+  }
+  
+  .bg-info {
+    background-color: hsl(193.7, 66.5%, 61.4%);
+  }
+  .bg-warning {
+    background-color: hsl(35.2, 84.4%, 62.4%);
+  }
+  .bg-error {
+    background-color: hsl(1.7, 64.5%, 58%);
+  }
+  .bg-success {
+    background-color: hsl(139.8, 49.1%, 55.3%);
+  }
+  .close {
+    width: 1rem;
+    height: 1rem;
+    fill: hsl(0, 0%, 100%);
+    position: absolute;
+    right: 1.6rem;
+    top: 0.4rem;
+  }

@@ -22,8 +22,9 @@ const StringManipulate: React.FC = (): JSX.Element => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [analysis, setAnalysis] = useState<AnalysisInterface>(initialObj);
 
-  const onSubmitHandler = (boolVal: boolean): void => {
+  const onSubmitHandler = (boolVal: boolean): boolean => {
     setIsSubmitted(boolVal);
+    return boolVal;
   };
 
   useEffect(() => {
