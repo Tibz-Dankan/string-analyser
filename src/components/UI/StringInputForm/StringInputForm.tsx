@@ -1,6 +1,6 @@
 import React, { Fragment, useRef, useContext, useState } from "react";
-import { StringInputContext } from "../../../context/stringInputContext";
 import { useUpdateNotification } from "../../../context/NotificationContext";
+import { useUpdateString } from "../../../context/StringContext";
 import styles from "./StringInputForm.module.scss";
 
 interface InputProps {
@@ -9,7 +9,7 @@ interface InputProps {
 
 const StringInputForm: React.FC<InputProps> = (props): JSX.Element => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const [strValue, setStrValue] = useContext<string | any>(StringInputContext);
+  const updateString = useUpdateString("");
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const updateNotification = useUpdateNotification({
     showCard: false,
@@ -41,8 +41,8 @@ const StringInputForm: React.FC<InputProps> = (props): JSX.Element => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const inputValue = inputRef.current?.value;
-    setStrValue(inputValue);
+    const strVal = inputRef.current?.value;
+    updateString(strVal);
     onSubmit();
     showCardHandler();
   };

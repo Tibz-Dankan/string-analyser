@@ -5,7 +5,7 @@ import {
   stringAnalysis,
   AnalysisInterface,
 } from "../../../utils/stringAnalysis";
-import { StringInputContext } from "../../../context/stringInputContext";
+import { useString } from "../../../context/StringContext";
 import styles from "./StringManipulate.module.scss";
 
 const initialObj: AnalysisInterface = {
@@ -18,7 +18,7 @@ const initialObj: AnalysisInterface = {
 };
 
 const StringManipulate: React.FC = (): JSX.Element => {
-  const str: string | any = useContext(StringInputContext);
+  const str: any = useString();
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [analysis, setAnalysis] = useState<AnalysisInterface>(initialObj);
 
@@ -28,8 +28,8 @@ const StringManipulate: React.FC = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (str[0] === null) return;
-    const strAnalyzed = stringAnalysis(str[0]);
+    if (str === null || str === undefined) return;
+    const strAnalyzed = stringAnalysis(str);
     setAnalysis(strAnalyzed);
   }, [isSubmitted]);
 

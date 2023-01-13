@@ -2,7 +2,6 @@ import { Fragment, useState, useContext, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import "./App.scss";
-import { StringInputContext } from "./context/stringInputContext";
 
 import Home from "./Pages/Home/Home";
 import Notification from "./components/UI/Notification/Notification";
@@ -10,8 +9,6 @@ import { useNotification } from "./context/NotificationContext";
 import { useUpdateNotification } from "./context/NotificationContext";
 
 function App(): JSX.Element {
-  const stringValue = useContext(StringInputContext);
-  const [strValue, setStrValue] = useState<string>(stringValue);
   const notification = useNotification();
   const updateNotification = useUpdateNotification({
     showCard: false,
@@ -81,9 +78,7 @@ function App(): JSX.Element {
 
   return (
     <Fragment>
-      <StringInputContext.Provider value={[strValue, setStrValue]}>
-        <RouterProvider router={router} />
-      </StringInputContext.Provider>
+      <RouterProvider router={router} />
     </Fragment>
   );
 }
