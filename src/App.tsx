@@ -3,50 +3,39 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import "./App.scss";
 import { StringInputContext } from "./context/stringInputContext";
-import { NotificationContext } from "./context/notification";
-import { NotificationInterface } from "./context/notification";
-import { hideCardNotification } from "./context/notification";
+
 import Home from "./Pages/Home/Home";
 import Notification from "./components/UI/Notification/Notification";
+import { useNotification } from "./context/NotificationContext";
+import { useUpdateNotification } from "./context/NotificationContext";
 
 function App(): JSX.Element {
   const stringValue = useContext(StringInputContext);
   const [strValue, setStrValue] = useState<string>(stringValue);
-  const notificationValue: NotificationInterface =
-    useContext(NotificationContext);
-  const [notification, setNotification] =
-    useState<NotificationInterface>(notificationValue);
-
-  const showCard: boolean = notificationValue.showCardNotification;
-  console.log("showCard");
-  console.log(showCard);
-  const [showCardNotification, setShowCardNotification] =
-    useState<boolean>(showCard);
+  const notification = useNotification();
+  const updateNotification = useUpdateNotification({
+    showCard: false,
+    type: "",
+    message: "",
+  });
 
   const closeCardHandler = (): void => {
-    // hideCardNotification();
-    setShowCardNotification(true);
+    updateNotification({
+      showCard: false,
+      type: "",
+      message: "",
+    });
   };
-
-  // Hide notification card
-  useEffect(() => {
-    if (showCardNotification) {
-      setTimeout(() => {
-        setShowCardNotification(false);
-      }, 5000);
-    }
-  }, [showCardNotification, setShowCardNotification]);
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: (
         <div>
-          {/* {notificationValue.showCardNotification && ( */}
-          {showCardNotification && (
+          {notification.showCardNotification && (
             <Notification
-              type={notificationValue.cardNotificationType}
-              message={notificationValue.cardMessage}
+              type={notification.cardNotificationType}
+              message={notification.cardMessage}
               onClose={closeCardHandler}
             />
           )}
@@ -58,11 +47,10 @@ function App(): JSX.Element {
       path: "/home",
       element: (
         <div>
-          {/* {notificationValue.showCardNotification && ( */}
-          {showCardNotification && (
+          {notification.showCardNotification && (
             <Notification
-              type={notificationValue.cardNotificationType}
-              message={notificationValue.cardMessage}
+              type={notification.cardNotificationType}
+              message={notification.cardMessage}
               onClose={closeCardHandler}
             />
           )}
@@ -74,11 +62,10 @@ function App(): JSX.Element {
       path: "/analyse",
       element: (
         <div>
-          {/* {notificationValue.showCardNotification && ( */}
-          {showCardNotification && (
+          {notification.showCardNotification && (
             <Notification
-              type={notificationValue.cardNotificationType}
-              message={notificationValue.cardMessage}
+              type={notification.cardNotificationType}
+              message={notification.cardMessage}
               onClose={closeCardHandler}
             />
           )}
@@ -95,9 +82,7 @@ function App(): JSX.Element {
   return (
     <Fragment>
       <StringInputContext.Provider value={[strValue, setStrValue]}>
-        <NotificationContext.Provider value={[notification, setNotification]}>
-          <RouterProvider router={router} />
-        </NotificationContext.Provider>
+        <RouterProvider router={router} />
       </StringInputContext.Provider>
     </Fragment>
   );

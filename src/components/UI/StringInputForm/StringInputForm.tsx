@@ -1,15 +1,6 @@
-import React, {
-  Fragment,
-  useRef,
-  useContext,
-  useState,
-  useEffect,
-} from "react";
+import React, { Fragment, useRef, useContext, useState } from "react";
 import { StringInputContext } from "../../../context/stringInputContext";
-import { showCardNotification } from "../../../context/notification";
-import { hideCardNotification } from "../../../context/notification";
-import { NotificationContext } from "../../../context/notification";
-// import { NotificationInterface } from "../../../context/notification";
+import { useUpdateNotification } from "../../../context/NotificationContext";
 import styles from "./StringInputForm.module.scss";
 
 interface InputProps {
@@ -20,7 +11,11 @@ const StringInputForm: React.FC<InputProps> = (props): JSX.Element => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [strValue, setStrValue] = useContext<string | any>(StringInputContext);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const [notification, setNotification] = useContext(NotificationContext);
+  const updateNotification = useUpdateNotification({
+    showCard: false,
+    type: "",
+    message: "",
+  });
 
   const onSubmit = (): void => {
     switch (isSubmitted) {
@@ -37,16 +32,11 @@ const StringInputForm: React.FC<InputProps> = (props): JSX.Element => {
   };
 
   const showCardHandler = (): void => {
-    const showCard = showCardNotification({
+    updateNotification({
+      showCard: true,
       type: "success",
-      message: "Analysis results updated",
+      message: "Results updated",
     });
-    setNotification(showCard);
-
-    setTimeout(() => {
-      const hideCard = hideCardNotification();
-      setNotification(hideCard);
-    }, 5000);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -56,23 +46,6 @@ const StringInputForm: React.FC<InputProps> = (props): JSX.Element => {
     onSubmit();
     showCardHandler();
   };
-
-  // useEffect(() => {
-  //   const showCardHandler = (): void => {
-  //     if (isSubmitted) {
-  //       const showCard = showCardNotification({
-  //         type: "success",
-  //         message: "Analysis complete, please check results",
-  //       });
-  //       setNotification(showCard);
-  //     }
-  //     setTimeout(() => {
-  //       const hideCard = hideCardNotification();
-  //       setNotification(hideCard);
-  //     }, 5000);
-  //   };
-  //   showCardHandler();
-  // }, [isSubmitted]);
 
   return (
     <Fragment>
