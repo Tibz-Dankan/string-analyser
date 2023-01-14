@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const StringContext = createContext<string | undefined>("");
+const StringContext = createContext<string | undefined>(undefined);
 const UpdateStringContext = createContext<(str: string | undefined) => void>(
   () => {}
 );
@@ -18,7 +18,7 @@ interface ProviderProps {
 }
 
 export const StringProvider: React.FC<ProviderProps> = (props): JSX.Element => {
-  const [str, setStr] = useState<string | undefined>("");
+  const [str, setStr] = useState<string | undefined>(undefined);
 
   const updateString = (str: string | undefined): void => {
     setStr(str);
