@@ -9,7 +9,6 @@ import { useNotification } from "./context/NotificationContext";
 import { useUpdateNotification } from "./context/NotificationContext";
 
 function App(): JSX.Element {
-  console.log("app actions being tested");
   const notification = useNotification();
   const updateNotification = useUpdateNotification({
     showCard: false,
